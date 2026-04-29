@@ -353,28 +353,28 @@ tailwind.config = {
         
         <!-- Image Area -->
         <div class="w-full md:w-1/2 h-64 md:h-auto relative bg-[#0A0F2C]">
-            <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
+            <img id="modal-image" src="" alt="" data-editable="image" class="w-full h-full object-cover">
         </div>
         
         <!-- Details Area -->
         <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-            <span id="modal-category" class="text-xs text-on-surface-variant font-label-caps uppercase border border-[#C9A84C]/30 px-3 py-1 rounded-full w-fit mb-4"></span>
-            <h2 id="modal-title" class="font-h1-ar text-3xl md:text-4xl text-[#C9A84C] mb-4 drop-shadow-md"></h2>
-            <p id="modal-description" class="text-on-surface text-lg mb-8 leading-relaxed"></p>
+            <span id="modal-category" data-editable="text" class="text-xs text-on-surface-variant font-label-caps uppercase border border-[#C9A84C]/30 px-3 py-1 rounded-full w-fit mb-4"></span>
+            <h2 id="modal-title" data-editable="text" class="font-h1-ar text-3xl md:text-4xl text-[#C9A84C] mb-4 drop-shadow-md"></h2>
+            <div id="modal-description" data-editable="long-text" class="text-on-surface text-lg mb-8 leading-relaxed"></div>
             
             <div class="space-y-4 mb-8">
                 <div class="flex items-start gap-3">
                     <span class="material-symbols-outlined text-[#C9A84C] mt-1">handyman</span>
                     <div>
                         <h4 class="text-[#C9A84C] font-semibold mb-1">الخامات:</h4>
-                        <p id="modal-materials" class="text-slate-300"></p>
+                        <p id="modal-materials" data-editable="text" class="text-slate-300"></p>
                     </div>
                 </div>
                 <div class="flex items-start gap-3">
                     <span class="material-symbols-outlined text-[#C9A84C] mt-1">sell</span>
                     <div>
                         <h4 class="text-[#C9A84C] font-semibold mb-1">السعر:</h4>
-                        <p id="modal-price" class="text-slate-300 font-bold text-xl tracking-wider"></p>
+                        <p id="modal-price" data-editable="text" class="text-slate-300 font-bold text-xl tracking-wider"></p>
                     </div>
                 </div>
             </div>
