@@ -1,483 +1,152 @@
 <!DOCTYPE html>
-<html class="dark" dir="rtl" lang="ar"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="description" content="الإسلامية للموبيليا - معرض أثاث فاخر في الإسكندرية. غرف نوم، معيشة، سفرة ومكاتب بأعلى جودة وأفضل الأسعار.">
-<meta name="keywords" content="أثاث فاخر, الإسكندرية, غرف نوم, ركنات, موبيليا, معرض أثاث">
-<meta name="author" content="الإسلامية للموبيليا">
-<meta property="og:title" content="الإسلامية للموبيليا - أثاث فاخر في الإسكندرية">
-<meta property="og:description" content="أكثر من ٢٠ عاماً من الخبرة في صناعة الأثاث الفاخر">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ar_EG">
-<title>الإسلامية للموبيليا | معرض أثاث فاخر - الإسكندرية</title>
-
-<!-- Tailwind CSS & Fonts -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Noto+Serif:wght@500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
-
-<!-- Preconnect for speed -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BD8DM30SEF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-BD8DM30SEF', {
-    page_title: document.title,
-    page_location: window.location.href
-  });
-</script>
-
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "secondary-container": "#785d00",
-                    "outline-variant": "#46464d",
-                    "surface-bright": "#39393b",
-                    "on-tertiary-fixed": "#161a32",
-                    "secondary-fixed-dim": "#e6c364",
-                    "on-surface": "#e5e1e5",
-                    "inverse-primary": "#585c7d",
-                    "surface-container-low": "#1b1b1e",
-                    "error": "#ffb4ab",
-                    "inverse-surface": "#e5e1e5",
-                    "primary-fixed-dim": "#c0c4ea",
-                    "error-container": "#93000a",
-                    "primary-fixed": "#dee0ff",
-                    "surface-container-high": "#2a2a2c",
-                    "on-tertiary": "#2b2f48",
-                    "secondary-fixed": "#ffe08f",
-                    "on-primary-fixed": "#141936",
-                    "surface-variant": "#353437",
-                    "surface-container": "#201f22",
-                    "surface-tint": "#c0c4ea",
-                    "tertiary-fixed-dim": "#c1c4e5",
-                    "on-tertiary-fixed-variant": "#414560",
-                    "surface-container-highest": "#353437",
-                    "on-primary-container": "#777b9e",
-                    "primary": "#c0c4ea",
-                    "tertiary-container": "#0c1028",
-                    "on-tertiary-container": "#787b99",
-                    "on-primary": "#2a2e4c",
-                    "outline": "#919098",
-                    "on-secondary": "#3d2e00",
-                    "primary-container": "#0a0f2c",
-                    "surface-container-lowest": "#0e0e10",
-                    "on-primary-fixed-variant": "#404564",
-                    "secondary": "#e6c364",
-                    "inverse-on-surface": "#303033",
-                    "on-background": "#e5e1e5",
-                    "on-secondary-container": "#fdd977",
-                    "on-surface-variant": "#c7c5ce",
-                    "tertiary-fixed": "#dee0ff",
-                    "surface": "#131315",
-                    "on-secondary-fixed": "#241a00",
-                    "background": "#131315",
-                    "on-secondary-fixed-variant": "#584400",
-                    "tertiary": "#c1c4e5",
-                    "on-error": "#690005",
-                    "surface-dim": "#131315",
-                    "on-error-container": "#ffdad6"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "container-max": "1440px",
-                    "md": "24px",
-                    "xl": "80px",
-                    "lg": "48px",
-                    "xs": "4px",
-                    "base": "8px",
-                    "gutter": "32px",
-                    "sm": "12px"
-            },
-            "fontFamily": {
-                    "h2-ar": [
-                            "Noto Serif"
-                    ],
-                    "display-xl": [
-                            "Playfair Display"
-                    ],
-                    "label-caps": [
-                            "Inter"
-                    ],
-                    "h1-ar": [
-                            "Noto Serif"
-                    ],
-                    "body-lg": [
-                            "Inter"
-                    ],
-                    "body-md": [
-                            "Inter"
-                    ]
-            },
-            "fontSize": {
-                    "h2-ar": [
-                            "32px",
-                            {
-                                    "lineHeight": "1.4",
-                                    "fontWeight": "500"
-                            }
-                    ],
-                    "display-xl": [
-                            "64px",
-                            {
-                                    "lineHeight": "1.1",
-                                    "letterSpacing": "-0.02em",
-                                    "fontWeight": "700"
-                            }
-                    ],
-                    "label-caps": [
-                            "12px",
-                            {
-                                    "lineHeight": "1.0",
-                                    "letterSpacing": "0.1em",
-                                    "fontWeight": "600"
-                            }
-                    ],
-                    "h1-ar": [
-                            "48px",
-                            {
-                                    "lineHeight": "1.3",
-                                    "fontWeight": "600"
-                            }
-                    ],
-                    "body-lg": [
-                            "18px",
-                            {
-                                    "lineHeight": "1.6",
-                                    "fontWeight": "400"
-                            }
-                    ],
-                    "body-md": [
-                            "16px",
-                            {
-                                    "lineHeight": "1.6",
-                                    "fontWeight": "400"
-                            }
-                    ]
-            }
-    },
-        },
-      }
-    </script>
-    <link rel="stylesheet" href="assets/css/editor.css">
-    <style>
-      /* Slow zoom animation for hero image */
-      @keyframes slowZoom {
-          0% { transform: scale(1.05); }
-          100% { transform: scale(1.2); }
-      }
-      .animate-zoom {
-          animation: slowZoom 25s ease-in-out infinite alternate;
-      }
-    </style>
-</head>
-<body class="bg-primary-container text-on-surface font-body-md min-h-screen">
-<!-- Admin Panel Inclusion -->
-<div id="admin-panel" class="admin-panel">
-
-</div>
-
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#0A0F2C]/60 backdrop-blur-lg border-b border-[#C9A84C]/20 shadow-2xl transition-all duration-500 ease-out hidden md:flex flex-row-reverse justify-between items-center px-12 h-24">
-<div class="flex items-center">
-<img alt="الإسلامية للموبيليا" class="h-20 w-auto drop-shadow-[0_0_8px_rgba(201,168,76,0.3)]" src="assets/images/logo.png"/>
-</div>
-<div class="flex gap-gutter font-serif tracking-widest uppercase">
-<a class="text-[#C9A84C] border-b-2 border-[#C9A84C] pb-1 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="index.html">الرئيسية</a>
-<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="gallery.html">المعرض</a>
-<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="about.html">من نحن</a>
-<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="location.html">الموقع</a>
-</div>
-<a href="contact.html" class="border border-[#C9A84C] text-secondary font-label-caps uppercase px-6 py-3 hover:bg-[#C9A84C] hover:text-primary-container transition-colors tracking-widest">
-            اتصل بنا
-</a>
-</nav>
-<!-- Mobile Nav Bar (Bottom) -->
-<nav class="md:hidden fixed bottom-0 w-full bg-[#0A0F2C]/90 backdrop-blur-lg z-50 shadow-2xl border-t border-[#C9A84C]/20">
-<div class="flex justify-around items-center h-16 px-4">
-<a class="flex flex-col items-center justify-center text-[#C9A84C]" href="index.html">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400" href="gallery.html">
-<span class="material-symbols-outlined">gallery_thumbnail</span>
-</a>
-<a class="flex flex-col items-center justify-center text-slate-400" href="about.html">
-<span class="material-symbols-outlined">info</span>
-</a>
-</div>
-</nav>
-<!-- Hero Section -->
-<header id="hero-block" data-block="true" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
-<!-- Deep Navy Background base -->
-<div class="absolute inset-0 bg-primary-container z-0"></div>
-<!-- Hero Image with Gradient Overlay -->
-<div class="absolute inset-0 z-10"><img alt="Hero Image" class="w-full h-full object-cover opacity-50 transform animate-zoom" data-edit-key="heroImg" data-editable="image" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2000&auto=format&fit=crop"/><div class="absolute inset-0 bg-gradient-to-b from-primary-container/90 via-transparent to-primary-container"></div><div class="absolute inset-0 bg-gradient-to-r from-primary-container/80 via-transparent to-primary-container/80"></div></div>
-<div class="relative z-20 text-center max-w-4xl px-gutter mx-auto flex flex-col items-center gap-lg gap-xl">
-<div class="flex flex-col items-center gap-2">
-    <h1 class="font-h1-ar text-h1-ar text-secondary drop-shadow-[0_0_15px_rgba(201,168,76,0.3)] text-5xl md:text-7xl !leading-tight" data-edit-key="heroMainTitle" data-editable="text">الإسلامية للموبيليا</h1>
-    <span class="text-xl md:text-2xl font-light opacity-80 text-secondary" data-edit-key="heroSubtitle" data-editable="text">حيث يلتقي الفن بالراحة</span>
-</div>
-<p class="font-display-xl text-display-xl text-on-surface opacity-90 tracking-wide uppercase text-4xl md:text-6xl font-bold !tracking-[0.15em] text-white/95" data-edit-key="heroEnTitle" data-editable="text">
-                Artistry In Every Thread
-            </p>
-<a class="mt-xl border-2 border-[#C9A84C] text-[#C9A84C] font-label-caps uppercase px-12 py-5 hover:bg-[#C9A84C] hover:text-primary-container transition-all duration-500 tracking-[0.3em] inline-flex items-center gap-md shadow-[0_0_25px_rgba(201,168,76,0.2)] hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] group" href="gallery.html">استكشف المعرض <span class="material-symbols-outlined text-lg group-hover:translate-y-1 transition-transform">arrow_downward</span></a>
-</div>
-<!-- Scroll Indicator -->
-<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-secondary opacity-70 hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-3xl animate-bounce">expand_more</span>
-</div>
-</header>
-<!-- Floating Stats Section -->
-<section id="stats-block" data-block="true" class="relative z-30 -mt-16 max-w-container-max mx-auto px-gutter mb-xl">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#141830] border border-[#C9A84C]/20 rounded-lg p-lg backdrop-blur-xl relative overflow-hidden">
-<!-- Subtle glow effect inside card -->
-<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent pointer-events-none"></div>
-<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
-<span class="font-display-xl text-display-xl text-secondary mb-xs" data-edit-key="stat1Value" data-editable="text">٢٠+</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest" data-edit-key="stat1Label" data-editable="text">سنة خبرة</span>
-</div>
-<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
-<span class="font-display-xl text-display-xl text-secondary mb-xs" data-edit-key="stat2Value" data-editable="text">٥٠٠+</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest" data-edit-key="stat2Label" data-editable="text">عميل</span>
-</div>
-<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
-<span class="font-display-xl text-display-xl text-secondary mb-xs" data-edit-key="stat3Value" data-editable="text">١٢+</span>
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest" data-edit-key="stat3Label" data-editable="text">مجموعة</span>
-</div>
-</div>
-</section>
-<!-- Featured Collections -->
-<section class="py-xl max-w-container-max mx-auto px-gutter" id="collections-block" data-block="true">
-<div class="text-center mb-xl">
-<h2 class="font-h2-ar text-h2-ar text-secondary mb-base" data-edit-key="featuredTitle" data-editable="text">مجموعاتنا المختارة</h2>
-<div class="h-px w-24 bg-[#C9A84C]/50 mx-auto"></div>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<!-- Card 1: ركنة -->
-<a class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer block" href="gallery.html?filter=ركنة">
-<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
-<img alt="ركنة" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-edit-key="coll1Img" data-editable="image" src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?q=80&w=1000&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
-<div class="absolute bottom-6 left-0 right-0 text-center z-20">
-<h3 class="text-secondary font-h2-ar text-2xl" data-edit-key="coll1Title" data-editable="text">ركنة</h3>
-</div>
-</a>
-<!-- Card 2: ركنة فاخرة -->
-<a class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer block" href="gallery.html?filter=ركنة فاخرة">
-<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
-<img alt="ركنة فاخرة" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-edit-key="coll2Img" data-editable="image" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1000&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
-<div class="absolute bottom-6 left-0 right-0 text-center z-20">
-<h3 class="text-secondary font-h2-ar text-2xl" data-edit-key="coll2Title" data-editable="text">ركنة فاخرة</h3>
-</div>
-</a>
-<!-- Card 3: كنبة بسرير قلاب -->
-<a class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer block" href="gallery.html?filter=كنبة بسرير قلاب">
-<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
-<img alt="كنبة بسرير قلاب" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-edit-key="coll3Img" data-editable="image" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
-<div class="absolute bottom-6 left-0 right-0 text-center z-20">
-<h3 class="text-secondary font-h2-ar text-2xl" data-edit-key="coll3Title" data-editable="text">كنبة بسرير قلاب</h3>
-</div>
-</a>
-<!-- Card 4: كنبة بسرير سحب -->
-<a class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer block" href="gallery.html?filter=كنبة بسرير سحب">
-<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
-<img alt="كنبة بسرير سحب" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-edit-key="coll4Img" data-editable="image" src="https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=1000&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
-<div class="absolute bottom-6 left-0 right-0 text-center z-20">
-<h3 class="text-secondary font-h2-ar text-2xl" data-edit-key="coll4Title" data-editable="text">كنبة بسرير سحب</h3>
-</div>
-</a>
-</div>
-</section>
-
-<!-- Featured Products -->
-<section class="py-xl max-w-container-max mx-auto px-gutter" id="featured-products-block" data-block="true">
-    <div class="text-center mb-xl">
-        <h2 class="font-h2-ar text-h2-ar text-secondary mb-base" data-edit-key="featuredProductsTitle" data-editable="text">منتجات مختارة</h2>
-        <p class="text-on-surface-variant max-w-2xl mx-auto" data-edit-key="featuredProductsSubtitle" data-editable="text">لمحة عن أرقى القطع المتوفرة حالياً في معرضنا</p>
-        <div class="h-px w-24 bg-[#C9A84C]/50 mx-auto mt-4"></div>
-    </div>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإسلامية للموبيليا | أثاث فاخر مودرن وكلاسيك</title>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Product 1 -->
-        <div class="bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT overflow-hidden group product-card">
-            <div class="aspect-square overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Product 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                     data-edit-key="featProd1Img" data-editable="image">
-                <div class="absolute inset-0 bg-primary-container/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600&family=Playfair+Display:wght@700&family=Inter:wght@400;600&family=Tajawal:wght@500;700;800&display=swap" />
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --edit-primary: #C9A84C;
+            --edit-surface: #141830;
+            --edit-border: #2a2e4c;
+        }
+        body { font-family: 'Tajawal', sans-serif; background-color: #0A0F2C; color: #e5e1e5; overflow-x: hidden; }
+        .hero-gradient { background: radial-gradient(circle at center, #141830 0%, #0A0F2C 100%); }
+        .gold-text { color: #C9A84C; }
+        .gold-border { border-color: #C9A84C; }
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; right: 0; width: 0; height: 2px; background: #C9A84C; transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        
+        .collection-card { position: relative; overflow: hidden; border-radius: 1rem; aspect-ratio: 4/5; }
+        .collection-img { width: 100%; height: 100%; object-cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .collection-card:hover .collection-img { transform: scale(1.1); }
+        .collection-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,15,44,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+    </style>
+    
+    <link rel="stylesheet" href="assets/css/editor.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0A0F2C]/60 backdrop-blur-lg border-b border-[#C9A84C]/20 px-12 h-24 flex items-center justify-between">
+        <div class="flex items-center">
+            <img src="assets/images/logo.png" alt="الإسلامية للموبيليا" class="h-20 w-auto" />
+        </div>
+        <div class="hidden md:flex gap-10">
+            <a href="index.html" class="nav-link gold-text">الرئيسية</a>
+            <a href="gallery.html" class="nav-link text-slate-300">المعرض</a>
+            <a href="about.html" class="nav-link text-slate-300">من نحن</a>
+            <a href="location.html" class="nav-link text-slate-300">الموقع</a>
+        </div>
+        <a href="contact.html" class="border border-[#C9A84C] text-[#C9A84C] px-8 py-3 hover:bg-[#C9A84C] hover:text-[#0A0F2C] transition-all font-bold">اتصل بنا</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center relative overflow-hidden hero-gradient" id="hero-block" data-block="true">
+        <div class="container mx-auto px-12 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h1 class="text-6xl md:text-8xl font-bold leading-tight" data-edit-key="hero_title" data-editable="text">الإسلامية للموبيليا<br><span class="gold-text">فخامة التفاصيل</span></h1>
+                <p class="text-xl text-slate-400 max-w-lg leading-relaxed" data-edit-key="hero_desc" data-editable="text">نصنع الأثاث الذي يعكس شخصيتك ويحول منزلك إلى تحفة فنية تدوم لأجيال. خبرة عريقة في عالم الموبيليا الفاخرة.</p>
+                <div class="flex gap-6">
+                    <a href="gallery.html" class="bg-[#C9A84C] text-[#0A0F2C] px-10 py-4 font-bold rounded-lg hover:bg-white transition-all">اكتشف المعرض</a>
+                    <a href="contact.html" class="border border-slate-600 px-10 py-4 font-bold rounded-lg hover:border-[#C9A84C] transition-all">تواصل معنا</a>
+                </div>
             </div>
-            <div class="p-lg text-center">
-                <h3 class="font-h2-ar text-xl text-secondary mb-2" data-edit-key="featProd1Title" data-editable="text">ركنة مودرن</h3>
-                <p class="text-on-surface-variant text-sm mb-4" data-edit-key="featProd1Price" data-editable="text">السعر عند الطلب</p>
-                <a href="gallery.html" class="inline-block border border-[#C9A84C]/50 text-[#C9A84C] text-xs uppercase tracking-widest px-4 py-2 hover:bg-[#C9A84C] hover:text-primary-container transition-all">تفاصيل أكثر</a>
+            <div class="relative">
+                <div class="absolute -inset-4 bg-[#C9A84C]/10 blur-3xl rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop" data-edit-key="hero_img" data-editable="image" alt="Luxury Sofa" class="relative z-10 rounded-2xl shadow-2xl border border-[#C9A84C]/20" />
             </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid (The new 4-column layout) -->
+    <section class="py-24 bg-[#0A0F2C]" id="collections-block" data-block="true">
+        <div class="container mx-auto px-12 text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4" data-edit-key="coll_title" data-editable="text">مجموعاتنا المتميزة</h2>
+            <div class="w-24 h-1 bg-[#C9A84C] mx-auto"></div>
         </div>
         
-        <!-- Product 2 -->
-        <div class="bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT overflow-hidden group product-card">
-            <div class="aspect-square overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Product 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                     data-edit-key="featProd2Img" data-editable="image">
-                <div class="absolute inset-0 bg-primary-container/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
+        <div class="container mx-auto px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- 1. ركنة -->
+            <a href="gallery.html?filter=ركنة" class="collection-card group">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop" alt="ركنة" class="collection-img" data-edit-key="cat_img_1" data-editable="image">
+                <div class="collection-overlay">
+                    <h3 class="text-2xl font-bold mb-2">ركنة</h3>
+                    <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">تصفح أحدث التصاميم</p>
+                </div>
+            </a>
+
+            <!-- 2. ركنة فاخرة -->
+            <a href="gallery.html?filter=ركنة فاخرة" class="collection-card group">
+                <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1000&auto=format&fit=crop" alt="ركنة فاخرة" class="collection-img" data-edit-key="cat_img_2" data-editable="image">
+                <div class="collection-overlay">
+                    <h3 class="text-2xl font-bold mb-2">ركنة فاخرة</h3>
+                    <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">رقي ملكي في منزلك</p>
+                </div>
+            </a>
+
+            <!-- 3. كنبة بسرير قلاب -->
+            <a href="gallery.html?filter=كنبة بسرير قلاب" class="collection-card group">
+                <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?q=80&w=1000&auto=format&fit=crop" alt="كنبة بسرير قلاب" class="collection-img" data-edit-key="cat_img_3" data-editable="image">
+                <div class="collection-overlay">
+                    <h3 class="text-2xl font-bold mb-2">كنبة بسرير قلاب</h3>
+                    <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">عملية وأناقة في آن واحد</p>
+                </div>
+            </a>
+
+            <!-- 4. كنبة بسرير سحب -->
+            <a href="gallery.html?filter=كنبة بسرير سحب" class="collection-card group">
+                <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=1000&auto=format&fit=crop" alt="كنبة بسرير سحب" class="collection-img" data-edit-key="cat_img_4" data-editable="image">
+                <div class="collection-overlay">
+                    <h3 class="text-2xl font-bold mb-2">كنبة بسرير سحب</h3>
+                    <p class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity">حلول ذكية للمساحات</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-[#070B1F] border-t border-[#C9A84C]/10" id="footer-block" data-block="true">
+        <div class="container mx-auto px-12 grid md:grid-cols-3 gap-12 text-center md:text-right">
+            <div>
+                <img src="assets/images/logo.png" alt="Logo" class="h-16 mx-auto md:mx-0 mb-6" />
+                <p class="text-slate-400" data-edit-key="footer_about" data-editable="text">الإسلامية للموبيليا - عنوان الفخامة والتميز في عالم الأثاث بالإسكندرية منذ سنوات.</p>
             </div>
-            <div class="p-lg text-center">
-                <h3 class="font-h2-ar text-xl text-secondary mb-2" data-edit-key="featProd2Title" data-editable="text">ركنة فاخرة</h3>
-                <p class="text-on-surface-variant text-sm mb-4" data-edit-key="featProd2Price" data-editable="text">السعر عند الطلب</p>
-                <a href="gallery.html" class="inline-block border border-[#C9A84C]/50 text-[#C9A84C] text-xs uppercase tracking-widest px-4 py-2 hover:bg-[#C9A84C] hover:text-primary-container transition-all">تفاصيل أكثر</a>
+            <div>
+                <h4 class="text-xl font-bold gold-text mb-6">روابط سريعة</h4>
+                <ul class="space-y-4 text-slate-400">
+                    <li><a href="index.html" class="hover:text-[#C9A84C]">الرئيسية</a></li>
+                    <li><a href="gallery.html" class="hover:text-[#C9A84C]">المعرض</a></li>
+                    <li><a href="about.html" class="hover:text-[#C9A84C]">من نحن</a></li>
+                    <li><a href="location.html" class="hover:text-[#C9A84C]">الموقع</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold gold-text mb-6">تواصل معنا</h4>
+                <p class="text-slate-400 mb-2" data-edit-key="address" data-editable="text">الإسكندرية - العصافرة شارع 15 متفرع من 45</p>
+                <p class="text-slate-400" data-edit-key="phone" data-editable="text">01227124707 - 01011476718</p>
             </div>
         </div>
-
-        <!-- Product 3 -->
-        <div class="bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT overflow-hidden group product-card">
-            <div class="aspect-square overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1550226891-ef816aed4a98?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Product 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                     data-edit-key="featProd3Img" data-editable="image">
-                <div class="absolute inset-0 bg-primary-container/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
-            </div>
-            <div class="p-lg text-center">
-                <h3 class="font-h2-ar text-xl text-secondary mb-2" data-edit-key="featProd3Title" data-editable="text">كنبة قلاب</h3>
-                <p class="text-on-surface-variant text-sm mb-4" data-edit-key="featProd3Price" data-editable="text">السعر عند الطلب</p>
-                <a href="gallery.html" class="inline-block border border-[#C9A84C]/50 text-[#C9A84C] text-xs uppercase tracking-widest px-4 py-2 hover:bg-[#C9A84C] hover:text-primary-container transition-all">تفاصيل أكثر</a>
-            </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT overflow-hidden group product-card">
-            <div class="aspect-square overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Product 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                     data-edit-key="featProd4Img" data-editable="image">
-                <div class="absolute inset-0 bg-primary-container/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
-            </div>
-            <div class="p-lg text-center">
-                <h3 class="font-h2-ar text-xl text-secondary mb-2" data-edit-key="featProd4Title" data-editable="text">كنبة سحب</h3>
-                <p class="text-on-surface-variant text-sm mb-4" data-edit-key="featProd4Price" data-editable="text">السعر عند الطلب</p>
-                <a href="gallery.html" class="inline-block border border-[#C9A84C]/50 text-[#C9A84C] text-xs uppercase tracking-widest px-4 py-2 hover:bg-[#C9A84C] hover:text-primary-container transition-all">تفاصيل أكثر</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="text-center mt-xl">
-        <a href="gallery.html" class="inline-flex items-center gap-md bg-[#C9A84C] text-primary-container font-bold px-12 py-4 rounded-DEFAULT hover:bg-white transition-all shadow-[0_0_20px_rgba(201,168,76,0.2)]" data-edit-key="viewGalleryBtn" data-editable="link">
-            تصفح المعرض الكامل <span class="material-symbols-outlined">arrow_forward</span>
-        </a>
-    </div>
-</section>
-
-<!-- Why Us -->
-<section class="py-xl bg-[#141830]/50 border-y border-[#C9A84C]/10" id="why-us-block" data-block="true">
-<div class="max-w-container-max mx-auto px-gutter">
-<div class="text-center mb-xl">
-<h2 class="font-h2-ar text-h2-ar text-secondary mb-base" data-edit-key="whyUsTitle" data-editable="text">لماذا نحن؟</h2>
-<div class="h-px w-24 bg-[#C9A84C]/50 mx-auto"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Icon Card 1 -->
-<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
-<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined">diamond</span>
-</div>
-<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm" data-edit-key="whyUs1Title" data-editable="text">جودة استثنائية</h4>
-<p class="font-body-md text-on-surface-variant" data-edit-key="whyUs1Desc" data-editable="long-text">نستخدم أفضل المواد لضمان متانة وأناقة تدوم طويلاً.</p>
-</div>
-<!-- Icon Card 2 -->
-<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
-<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined">design_services</span>
-</div>
-<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm" data-edit-key="whyUs2Title" data-editable="text">تصاميم فريدة</h4>
-<p class="font-body-md text-on-surface-variant" data-edit-key="whyUs2Desc" data-editable="long-text">قطع فنية مصممة خصيصاً لتناسب ذوقك الرفيع.</p>
-</div>
-<!-- Icon Card 3 -->
-<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
-<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined">support_agent</span>
-</div>
-<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm" data-edit-key="whyUs3Title" data-editable="text">خدمة عملاء</h4>
-<p class="font-body-md text-on-surface-variant" data-edit-key="whyUs3Desc" data-editable="long-text">فريق مخصص لخدمتك قبل وبعد البيع لضمان رضاك التام.</p>
-</div>
-<!-- Icon Card 4 -->
-<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
-<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
-<span class="material-symbols-outlined">local_shipping</span>
-</div>
-<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm" data-edit-key="whyUs4Title" data-editable="text">توصيل آمن</h4>
-<p class="font-body-md text-on-surface-variant" data-edit-key="whyUs4Desc" data-editable="long-text">خدمة توصيل وتركيب احترافية تحافظ على سلامة أثاثك.</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Atmospheric Quote -->
-<section id="atmospheric-block" data-block="true" class="relative min-h-[500px] flex items-center justify-center overflow-hidden my-xl">
-<div class="absolute inset-0 z-0">
-<img alt="Atmospheric Furniture Scene" class="w-full h-full object-cover opacity-30" data-edit-key="atmosphericImg" data-editable="image" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2000&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-primary-container/80 backdrop-blur-sm"></div>
-</div>
-<div class="relative z-10 text-center max-w-3xl px-gutter p-lg border border-[#C9A84C]/30 bg-[#141830]/40 backdrop-blur-md">
-<span class="material-symbols-outlined text-secondary text-4xl mb-md">format_quote</span>
-<p class="font-h2-ar text-[36px] text-secondary leading-relaxed mb-lg" data-edit-key="quoteText" data-editable="long-text">
-                "الأثاث ليس مجرد قطع لملء الفراغ، بل هو تجسيد لأسلوب الحياة وانعكاس للشخصية. نحن نصنع قطعاً تروي قصتك."
-            </p>
-<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]" data-edit-key="quoteAuthor" data-editable="text">
-                المدير الإبداعي
-            </div>
-</div>
-</section>
-
-<!-- Footer -->
-<footer id="footer-block" data-block="true">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-info">
-                <a href="index.html" class="footer-logo">
-                    <img src="assets/images/logo.png" alt="الإسلامية للموبيليا" style="height: 50px; display: block;">
-                </a>
-                <p><i class="fas fa-map-marker-alt"></i> <span data-edit-key="address" data-editable="text">الإسكندرية - العصافرة: شارع 15 متفرع من شارع 45 (ناصية جيلاتي الشافعي)</span></p>
-                <p style="direction: ltr; text-align: right;"><i class="fas fa-phone"></i> 
-                    <span data-edit-key="phone1" data-editable="text">01227124707</span> - 
-                    <span data-edit-key="phone2" data-editable="text">01011476718</span> - 
-                    <span data-edit-key="phone3" data-editable="text">01289464210</span>
-                </p>
-            </div>
-            <div class="footer-links">
-                <a href="index.html">الرئيسية</a> |
-                <a href="gallery.html">المعرض</a> |
-                <a href="about.html">من نحن</a> |
-                <a href="location.html">الموقع</a> |
-                <a href="contact.html">اتصل بنا</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/Eslameyafurniture" target="_blank" class="social-icon" data-edit-key="facebookLink" data-editable="link"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
+        <div class="border-t border-slate-800 mt-12 pt-8 text-center text-slate-500 text-sm">
             <p>© ٢٠٢٤ الإسلامية للموبيليا. جميع الحقوق محفوظة.</p>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-<script src="assets/js/firebase-init.js"></script>
-<script src="assets/js/editor.js"></script>
-</body></html>
+    <!-- Core Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="assets/js/firebase-init.js"></script>
+    <script src="assets/js/editor.js"></script>
+</body>
+</html>

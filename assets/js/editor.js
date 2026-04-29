@@ -582,43 +582,58 @@ function saveBlockOrder() {
 // SAVING AND LOADING (DRAFTS & PUBLISH)
 // =========================================================================
 
-function saveDraft(key, value) {
+async function saveDraft(key, value) {
     if (!key) return;
 
-    if (key.startsWith('category_')) {
-        const oldCat = key.replace('category_', '');
-        const newCat = value.trim();
+    // Handle Product and Category updates (for Gallery)
+    if (key.startsWith('category_') || key.startsWith('product_')) {
         if (window._galleryProducts) {
-             window._galleryProducts.forEach(p => {
-                  if (p.category === oldCat) p.category = newCat;
-             });
-             localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-             showDraftIndicator();
-             // ❌ REMOVED RELOAD: instead, just re-render UI if possible
-             if (window._galleryRenderFn) window._galleryRenderFn(window._galleryProducts);
-        }
-        return;
-    }
-
-    if (key.startsWith('product_')) {
-        const parts = key.split('_');
-        if (parts.length >= 3) {
-            const id = parseInt(parts[1]);
-            const field = parts[2];
-            if (window._galleryProducts) {
-                 const prod = window._galleryProducts.find(p => p.id === id);
-                 if (prod) {
-                     prod[field] = value;
-                     localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-                     showDraftIndicator();
-                     return;
-                 }
+            if (key.startsWith('category_')) {
+                const oldCat = key.replace('category_', '');
+                const newCat = value.trim();
+                window._galleryProducts.forEach(p => {
+                    if (p.category === oldCat) p.category = newCat;
+                });
+                if (window._galleryCategories) {
+                    const cIdx = window._galleryCategories.indexOf(oldCat);
+                    if (cIdx > -1) window._galleryCategories[cIdx] = newCat;
+                }
+            } else {
+                const parts = key.split('_');
+                if (parts.length >= 3) {
+                    const id = parseInt(parts[1]);
+                    const field = parts[2];
+                    const prod = window._galleryProducts.find(p => p.id === id);
+                    if (prod) prod[field] = value;
+                }
             }
+
+            // Sync to Firebase immediately
+            if (typeof db !== 'undefined') {
+                await db.ref('products').set(window._galleryProducts);
+                if (key.startsWith('category_')) await db.ref('categories').set(window._galleryCategories);
+            }
+            
+            localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
+            if (window._galleryRenderFn) window._galleryRenderFn(window._galleryProducts);
+            showDraftIndicator();
+            return;
         }
     }
 
+    // Handle Global Content updates
     draftContent[key] = value;
     localStorage.setItem('islamiya_draft_content', JSON.stringify(draftContent));
+    
+    if (typeof db !== 'undefined') {
+        try {
+            await db.ref('content').update({ [key]: value });
+            console.log(`Cloud sync success: ${key}`);
+        } catch (e) {
+            console.warn("Cloud sync failed, keeping local draft.", e);
+        }
+    }
+    
     showDraftIndicator();
 }
 
