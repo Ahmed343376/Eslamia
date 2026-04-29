@@ -1,0 +1,14 @@
+[
+  {"id":1,"name":"طقم نوم كلاسيك فاخر","category":"ركنة بسرير سحب","categoryEn":"corner_pull","image":"assets/images/products/bedroom-1.jpg","description":"طقم غرفة نوم بخامات ممتازة وتصميم ملكي"},
+  {"id":2,"name":"سرير مودرن مع التسريحة","category":"ركنة بسرير سحب","categoryEn":"corner_pull","image":"assets/images/products/bedroom-1.jpg","description":"تصميم عصري بلمسة ذهبية"},
+  {"id":3,"name":"غرفة نوم شبابية","category":"ركنة بسرير سحب","categoryEn":"corner_pull","image":"assets/images/products/bedroom-1.jpg","description":"تصميم عملي وأنيق للشباب"},
+  {"id":4,"name":"ركنة مخمل ملكية","category":"كنبة","categoryEn":"sofa","image":"assets/images/products/living-1.jpg","description":"ركنة مخمل بألوان هادئة"},
+  {"id":5,"name":"كنبة L شكل فاخرة","category":"كنبة","categoryEn":"sofa","image":"assets/images/products/living-1.jpg","description":"تصميم راقي يناسب المساحات الكبيرة"},
+  {"id":6,"name":"طقم استقبال كلاسيك","category":"كنبة","categoryEn":"sofa","image":"assets/images/products/living-1.jpg","description":"أثاث ملكي بزخارف ذهبية"},
+  {"id":7,"name":"سفرة 8 كراسي خشب","category":"ركنة بسرير قلاب","categoryEn":"corner_flip","image":"assets/images/products/dining-1.jpg","description":"طاولة سفرة من الخشب الصلب"},
+  {"id":8,"name":"سفرة زجاج وستانلس","category":"ركنة بسرير قلاب","categoryEn":"corner_flip","image":"assets/images/products/dining-1.jpg","description":"تصميم مودرن بزجاج مقسى"},
+  {"id":9,"name":"سفرة كلاسيك منحوتة","category":"ركنة بسرير قلاب","categoryEn":"corner_flip","image":"assets/images/products/dining-1.jpg","description":"منحوتات يدوية على الخشب"},
+  {"id":10,"name":"مكتب تنفيذي فاخر","category":"كنبة","categoryEn":"sofa","image":"assets/images/products/office-1.jpg","description":"مكتب واسع بأدراج متعددة"},
+  {"id":11,"name":"مكتبة خشبية كلاسيك","category":"كنبة","categoryEn":"sofa","image":"assets/images/products/office-1.jpg","description":"مكتبة بخشب الزان الفاخر"},
+  {"id":12,"name":"طقم استقبال رسمي","category":"كنبة بسرير","categoryEn":"sofa_bed","image":"assets/images/products/reception-1.jpg","description":"طقم استقبال لمكاتب وشركات"}
+]

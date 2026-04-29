@@ -1,0 +1,4 @@
+/* Animations overrides and fallbacks */
+.gs-reveal {
+    visibility: hidden; /* Hide initially for GSAP */
+}

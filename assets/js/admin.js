@@ -1,0 +1,1 @@
+// Admin system has been completely removed as per user request.

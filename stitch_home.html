@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الإسلامية للموبيليا</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Noto+Serif:wght@500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#785d00",
+                    "outline-variant": "#46464d",
+                    "surface-bright": "#39393b",
+                    "on-tertiary-fixed": "#161a32",
+                    "secondary-fixed-dim": "#e6c364",
+                    "on-surface": "#e5e1e5",
+                    "inverse-primary": "#585c7d",
+                    "surface-container-low": "#1b1b1e",
+                    "error": "#ffb4ab",
+                    "inverse-surface": "#e5e1e5",
+                    "primary-fixed-dim": "#c0c4ea",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#dee0ff",
+                    "surface-container-high": "#2a2a2c",
+                    "on-tertiary": "#2b2f48",
+                    "secondary-fixed": "#ffe08f",
+                    "on-primary-fixed": "#141936",
+                    "surface-variant": "#353437",
+                    "surface-container": "#201f22",
+                    "surface-tint": "#c0c4ea",
+                    "tertiary-fixed-dim": "#c1c4e5",
+                    "on-tertiary-fixed-variant": "#414560",
+                    "surface-container-highest": "#353437",
+                    "on-primary-container": "#777b9e",
+                    "primary": "#c0c4ea",
+                    "tertiary-container": "#0c1028",
+                    "on-tertiary-container": "#787b99",
+                    "on-primary": "#2a2e4c",
+                    "outline": "#919098",
+                    "on-secondary": "#3d2e00",
+                    "primary-container": "#0a0f2c",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-primary-fixed-variant": "#404564",
+                    "secondary": "#e6c364",
+                    "inverse-on-surface": "#303033",
+                    "on-background": "#e5e1e5",
+                    "on-secondary-container": "#fdd977",
+                    "on-surface-variant": "#c7c5ce",
+                    "tertiary-fixed": "#dee0ff",
+                    "surface": "#131315",
+                    "on-secondary-fixed": "#241a00",
+                    "background": "#131315",
+                    "on-secondary-fixed-variant": "#584400",
+                    "tertiary": "#c1c4e5",
+                    "on-error": "#690005",
+                    "surface-dim": "#131315",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1440px",
+                    "md": "24px",
+                    "xl": "80px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "base": "8px",
+                    "gutter": "32px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "h2-ar": [
+                            "Noto Serif"
+                    ],
+                    "display-xl": [
+                            "Playfair Display"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "h1-ar": [
+                            "Noto Serif"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "h2-ar": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-xl": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "h1-ar": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+</head>
+<body class="bg-primary-container text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0A0F2C]/60 backdrop-blur-lg border-b border-[#C9A84C]/20 shadow-2xl transition-all duration-500 ease-out hidden md:flex flex-row-reverse justify-between items-center px-12 h-24">
+<div class="flex items-center">
+<img alt="الإسلامية للموبيليا" class="h-16 w-auto drop-shadow-[0_0_8px_rgba(201,168,76,0.3)]" src="https://lh3.googleusercontent.com/aida/ADBb0ui5WJ6W7KDEUbrtXXloFJZrO6BOavGT3m5DfYwF9Xu49pzwgsayElUbZQ5290UH30J2z8oq0U7pRK5xzhKHsnK4xRIfWhOlFegQKvF1SleCOKgBbutmuKzLQgc-9k-KF-yE3X3XDhjBSq0Ef-tsjeEQU4D-2gIAjQyC8jMB1KUpG3_zgGT50ERyrUwj9kI4oStxF5lOgSyxVT-iFWt1g_2uF69vDqDINe0yRABq3VVnTeC3m539Mr0SwQOYg2yRTRPPo99UKTTA_Q"/>
+</div>
+<div class="flex gap-gutter font-serif tracking-widest uppercase">
+<a class="text-[#C9A84C] border-b-2 border-[#C9A84C] pb-1 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="#">الرئيسية</a>
+<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="#">المجموعات</a>
+<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="#">المعرض</a>
+<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="#">من نحن</a>
+<a class="text-slate-300 hover:text-[#C9A84C] hover:drop-shadow-[0_0_8px_rgba(201,168,76,0.5)]" href="#">الموقع</a>
+</div>
+<button class="border border-[#C9A84C] text-secondary font-label-caps uppercase px-6 py-3 hover:bg-[#C9A84C] hover:text-primary-container transition-colors tracking-widest">
+            اتصل بنا
+        </button>
+</nav>
+<!-- Mobile Nav Bar (Bottom) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#0A0F2C]/90 backdrop-blur-lg z-50 shadow-2xl border-t border-[#C9A84C]/20">
+<div class="flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-[#C9A84C]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">chair</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">gallery_thumbnail</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">info</span>
+</a>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+<!-- Deep Navy Background base -->
+<div class="absolute inset-0 bg-primary-container z-0"></div>
+<!-- Hero Image with Gradient Overlay -->
+<div class="absolute inset-0 z-10"><img alt="Hero Image" class="w-full h-full object-cover opacity-50 scale-105 transform" data-alt="ultra-luxury minimalist sofa in deep blue velvet, dramatic spotlighting, high-contrast atmospheric setting, premium materials, cinematic furniture photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8L3ILSrugAD1VCKy0grVsqg9vAC8_vOOAkHm1_dRU8EI3cYpP9n3Tkc0sYdsu32RC46sYQsZct0IuzgHJFcEqMTdR17JUrADA9fS6i4rnProfVdHAkcQMxmWrba4PMzR4gBMVhhGivPfyr29jomJFO68mnP4O9MKJiIyyLV4uc6GK9J9pH_U1eDCS8okWSXXbD31OCHspSbvwx4rnRyazbypUUSjrT5sgLrhWyKcAlm2er7Efz_oxJU_X_WIbZYG0F60XePhNEJE"/><div class="absolute inset-0 bg-gradient-to-b from-primary-container/90 via-transparent to-primary-container"></div><div class="absolute inset-0 bg-gradient-to-r from-primary-container/80 via-transparent to-primary-container/80"></div></div>
+<div class="relative z-20 text-center max-w-4xl px-gutter mx-auto flex flex-col items-center gap-lg gap-xl">
+<h1 class="font-h1-ar text-h1-ar text-secondary drop-shadow-[0_0_15px_rgba(201,168,76,0.3)] text-5xl md:text-7xl !leading-tight drop-shadow-[0_0_20px_rgba(201,168,76,0.5)]">الإسلامية للموبيليا <span class="block mt-2 text-xl md:text-2xl font-light opacity-80">حيث يلتقي الفن بالراحة</span></h1>
+<p class="font-display-xl text-display-xl text-on-surface opacity-90 tracking-wide uppercase text-4xl md:text-6xl font-bold !tracking-[0.15em] text-white/95">
+                Artistry In Every Thread
+            </p>
+<a class="mt-xl border-2 border-[#C9A84C] text-[#C9A84C] font-label-caps uppercase px-12 py-5 hover:bg-[#C9A84C] hover:text-primary-container transition-all duration-500 tracking-[0.3em] inline-flex items-center gap-md shadow-[0_0_25px_rgba(201,168,76,0.2)] hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] group" href="#collections">Explore Collections <span class="material-symbols-outlined text-lg group-hover:translate-y-1 transition-transform">arrow_downward</span></a>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-secondary opacity-70 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl animate-bounce">expand_more</span>
+</div>
+</header>
+<!-- Floating Stats Section -->
+<section class="relative z-30 -mt-16 max-w-container-max mx-auto px-gutter mb-xl">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#141830] border border-[#C9A84C]/20 rounded-lg p-lg backdrop-blur-xl relative overflow-hidden">
+<!-- Subtle glow effect inside card -->
+<div class="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent pointer-events-none"></div>
+<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
+<span class="font-display-xl text-display-xl text-secondary mb-xs">٢٠+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">سنة خبرة</span>
+</div>
+<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
+<span class="font-display-xl text-display-xl text-secondary mb-xs">٥٠٠+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">عميل</span>
+</div>
+<div class="flex flex-col items-center text-center p-md border-b md:border-b-0 md:border-l border-[#C9A84C]/10 last:border-0">
+<span class="font-display-xl text-display-xl text-secondary mb-xs">١٢+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">مجموعة</span>
+</div>
+</div>
+</section>
+<!-- Featured Collections -->
+<section class="py-xl max-w-container-max mx-auto px-gutter" id="collections">
+<div class="text-center mb-xl">
+<h2 class="font-h2-ar text-h2-ar text-secondary mb-base">مجموعاتنا المختارة</h2>
+<div class="h-px w-24 bg-[#C9A84C]/50 mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer">
+<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
+<img alt="Living Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="luxurious minimalist sofa in dark velvet, dark textured background, dramatic spot lighting, elegant gold details, high-end furniture photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8L3ILSrugAD1VCKy0grVsqg9vAC8_vOOAkHm1_dRU8EI3cYpP9n3Tkc0sYdsu32RC46sYQsZct0IuzgHJFcEqMTdR17JUrADA9fS6i4rnProfVdHAkcQMxmWrba4PMzR4gBMVhhGivPfyr29jomJFO68mnP4O9MKJiIyyLV4uc6GK9J9pH_U1eDCS8okWSXXbD31OCHspSbvwx4rnRyazbypUUSjrT5sgLrhWyKcAlm2er7Efz_oxJU_X_WIbZYG0F60XePhNEJE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 right-0 p-lg z-30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="font-h2-ar text-h2-ar text-secondary mb-xs">غرف المعيشة</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Living Collection</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer md:-translate-y-12">
+<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
+<img alt="Dining Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="dark polished dining table set, elegant minimalist chairs, moody dramatic lighting, luxury dining room atmosphere, black and gold tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxupzGYqI54oCNtXfoCanCoHiDvebgOoCK5ukR_yHU23tTSiTMimb7p2o6MOadmlzMIgLBBpwHdxpnd6qifbqAH3J9kg4lt4aicqci63UtWvGlVwSZRH_cObKFUTzQTquE18SaahJPXRdQzLNk_JfzHuccj-AgorOiELeTf0LmezN9jTqkLcgz-pFAnsLwl5bX-6QzUPbfgTaSifcOwEEC__eJPMQVLNn047cOElajpyBNhxK83rGfvHYTrUyuyHQkLN2jTan5N6Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 right-0 p-lg z-30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="font-h2-ar text-h2-ar text-secondary mb-xs">غرف الطعام</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Dining Collection</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative aspect-[4/5] overflow-hidden bg-[#141830] border border-[#C9A84C]/20 rounded-DEFAULT cursor-pointer">
+<div class="absolute inset-2 border border-[#C9A84C]/10 z-20 pointer-events-none transition-colors group-hover:border-[#C9A84C]/40"></div>
+<img alt="Bedroom Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100" data-alt="luxurious master bed with dark linens, elegant minimalist bedroom design, moody lighting, subtle gold accents on nightstands, high end interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi987e6TYgEG10iyDfLGlGe8-XeQtObqBxq49hWcwvaxv0yOmCHv_2W8AYYIBacgrUHAUlisbeq6Wy2o7ITuRa_bIg6rbzNkghkt8hwR1gIaSlv2vMqO6i5VmozL0AyHpvoVCLyBx7Vw6_-lnFO5Blq1fGEgpMxFun_Dfj2VydiIDq7pnnyPEMo5yexESYefTmkTlkW0Bk18SN5dkJ4QyOkYey58M4h2COWEhL7r7kl4fQ-zVMVB0HW75tz4-61fZtfyEOde_j4lk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/40 to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 right-0 p-lg z-30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<h3 class="font-h2-ar text-h2-ar text-secondary mb-xs">غرف النوم</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Bedroom Collection</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Us (Glassmorphism Bento Grid) -->
+<section class="py-xl bg-[#141830]/50 border-y border-[#C9A84C]/10">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<h2 class="font-h2-ar text-h2-ar text-secondary mb-base">لماذا نحن؟</h2>
+<div class="h-px w-24 bg-[#C9A84C]/50 mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Icon Card 1 -->
+<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
+<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">diamond</span>
+</div>
+<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm">جودة استثنائية</h4>
+<p class="font-body-md text-on-surface-variant">نستخدم أفضل المواد لضمان متانة وأناقة تدوم طويلاً.</p>
+</div>
+<!-- Icon Card 2 -->
+<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
+<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">design_services</span>
+</div>
+<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm">تصاميم فريدة</h4>
+<p class="font-body-md text-on-surface-variant">قطع فنية مصممة خصيصاً لتناسب ذوقك الرفيع.</p>
+</div>
+<!-- Icon Card 3 -->
+<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
+<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm">خدمة عملاء</h4>
+<p class="font-body-md text-on-surface-variant">فريق مخصص لخدمتك قبل وبعد البيع لضمان رضاك التام.</p>
+</div>
+<!-- Icon Card 4 -->
+<div class="bg-primary-container/60 backdrop-blur-md border border-[#C9A84C]/20 p-lg rounded-DEFAULT group hover:shadow-[0_0_15px_rgba(201,168,76,0.15)] transition-all">
+<div class="w-12 h-12 rounded-full border border-[#C9A84C] flex items-center justify-center mb-md text-secondary group-hover:bg-[#C9A84C] group-hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<h4 class="font-h2-ar text-[24px] text-on-surface mb-sm">توصيل آمن</h4>
+<p class="font-body-md text-on-surface-variant">خدمة توصيل وتركيب احترافية تحافظ على سلامة أثاثك.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Full Width Atmospheric Section -->
+<section class="relative min-h-[614px] flex items-center justify-center overflow-hidden my-xl">
+<div class="absolute inset-0 z-0">
+<img alt="Atmospheric Furniture Scene" class="w-full h-full object-cover opacity-30" data-alt="abstract close up of dark rich walnut wood grain and polished brass hardware, moody lighting, luxury materials, sophisticated background texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYU9IDG1MgmkzZLXHog3Z1v4INvOZziLLhBDh30uhafoW3spDuVpnvdWanGo8jZ8O6zhH29p7ZdCFKpOljXyeaYHw5gMNxawafDBN1IwSKgNjmECjaFpz3OIKItZ_9eWARGYUwfm8EKswOnlkdTV9uIpA5c7m_cYFFg6MfhH-nT1EbfL_cObaLbw8raVo1-tzEU4bv_Mag9uFuW83yM6G_qhHNQ94riIo7k9m1wAvYKD3o7XCg3jQcQExgduQMuD3GPOKIxK0kvVw"/>
+<div class="absolute inset-0 bg-primary-container/80 backdrop-blur-sm"></div>
+</div>
+<div class="relative z-10 text-center max-w-3xl px-gutter p-lg border border-[#C9A84C]/30 bg-[#141830]/40 backdrop-blur-md">
+<span class="material-symbols-outlined text-secondary text-4xl mb-md">format_quote</span>
+<p class="font-h2-ar text-[36px] text-secondary leading-relaxed mb-lg">
+                "الأثاث ليس مجرد قطع لملء الفراغ، بل هو تجسيد لأسلوب الحياة وانعكاس للشخصية. نحن نصنع قطعاً تروي قصتك."
+            </p>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.2em]">
+                المدير الإبداعي
+            </div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full border-t border-[#C9A84C]/20 bg-[#0A0F2C] flex flex-col items-center gap-8 py-16 px-8 text-center pb-24 md:pb-16">
+<div class="flex flex-col items-center gap-4">
+<img alt="الإسلامية للموبيليا" class="h-24 w-auto drop-shadow-[0_0_8px_rgba(201,168,76,0.3)]" src="https://lh3.googleusercontent.com/aida/ADBb0ui5WJ6W7KDEUbrtXXloFJZrO6BOavGT3m5DfYwF9Xu49pzwgsayElUbZQ5290UH30J2z8oq0U7pRK5xzhKHsnK4xRIfWhOlFegQKvF1SleCOKgBbutmuKzLQgc-9k-KF-yE3X3XDhjBSq0Ef-tsjeEQU4D-2gIAjQyC8jMB1KUpG3_zgGT50ERyrUwj9kI4oStxF5lOgSyxVT-iFWt1g_2uF69vDqDINe0yRABq3VVnTeC3m539Mr0SwQOYg2yRTRPPo99UKTTA_Q"/>
+</div>
+<div class="flex flex-col items-center gap-4 text-slate-300 font-body-md max-w-2xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#C9A84C]">location_on</span>
+<p>الإسكندرية - العصافرة: شارع 15 متفرع من شارع 45 (ناصية جيلاتي الشافعي)</p>
+</div>
+<div class="flex items-center gap-2" dir="ltr">
+<span class="material-symbols-outlined text-[#C9A84C]">phone</span>
+<p>01227124707 - 01011476718 - 01289464210</p>
+</div>
+<div class="flex items-center gap-2" dir="ltr">
+<span class="material-symbols-outlined text-[#C9A84C]">language</span>
+<a class="hover:text-[#C9A84C] transition-colors" href="https://www.facebook.com/Eslameyafurniture" target="_blank">www.facebook.com/Eslameyafurniture</a>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-6 font-serif text-sm">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">الخصوصية</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">الشروط والأحكام</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">سياستنا</a>
+</div>
+<div class="text-slate-400 font-serif text-sm mt-4">
+            © ٢٠٢٤ الإسلامية للموبيليا. جميع الحقوق محفوظة.
+        </div>
+</footer>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- Admin Panel HTML Fragment - injected by admin.js -->
+
+<div id="admin-overlay"></div>
+
+<!-- PASSWORD MODAL -->
+<div id="admin-password-modal">
+  <h3>&#x1F510; لوحة إدارة المعرض</h3>
+  <input type="password" id="admin-pass-input" placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;" />
+  <button class="btn-submit" onclick="checkPassword()">دخول</button>
+  <p class="error-msg" id="admin-error">كلمة المرور خاطئة</p>
+</div>
+
+<!-- ADMIN SIDEBAR -->
+<div id="admin-panel">
+  <div class="admin-header">
+    <h4>&#x2699;&#xFE0F; لوحة الإدارة</h4>
+    <button class="admin-close-btn" onclick="closeAdmin()">&#x2715;</button>
+  </div>
+
+  <div class="admin-tabs">
+    <button class="admin-tab-btn active" onclick="switchTab('products')">المنتجات</button>
+    <button class="admin-tab-btn" onclick="switchTab('categories')">التصنيفات</button>
+    <button class="admin-tab-btn" onclick="switchTab('settings')">الإعدادات</button>
+    <button class="admin-tab-btn" onclick="switchTab('export')">تصدير</button>
+  </div>
+
+  <!-- TAB 1: PRODUCTS -->
+  <div id="tab-products" class="admin-tab-content active">
+    <button onclick="showAddForm()"
+      style="width:100%;background:#C9A84C;color:#0A0F2C;border:none;padding:.75rem;
+      border-radius:8px;font-family:Tajawal;font-weight:bold;cursor:pointer;margin-bottom:1rem;">
+      + إضافة منتج جديد
+    </button>
+    <div id="add-product-form" class="edit-form">
+      <input id="new-name" placeholder="اسم المنتج" />
+      <input id="new-category" list="category-list" placeholder="التصنيف (مثال: غرف النوم)" />
+      <datalist id="category-list">
+        <option value="غرف النوم">
+        <option value="غرف المعيشة">
+        <option value="غرف الطعام">
+        <option value="المكاتب">
+        <option value="الاستقبال">
+        <option value="غرف الأطفال">
+      </datalist>
+      <input id="new-image" placeholder="رابط الصورة أو مسارها" />
+      <input id="new-price" placeholder="السعر (مثال: 45,000 ج.م)" />
+      <input id="new-materials" placeholder="الخامات" />
+      <input id="new-desc" placeholder="وصف مختصر" />
+      <button class="btn-save" onclick="addProduct()">حفظ المنتج</button>
+    </div>
+    <button id="btn-publish-products" onclick="commitProductsToGitHub()"
+      style="width:100%;background:#141830;color:#C9A84C;border:1px solid #C9A84C;padding:.75rem;
+      border-radius:8px;font-family:Tajawal;font-weight:bold;cursor:pointer;margin-bottom:1rem;">
+      &#x1F680; نشر المنتجات على الموقع
+    </button>
+    <div id="products-list"></div>
+  </div>
+
+  <!-- TAB: CATEGORIES -->
+  <div id="tab-categories" class="admin-tab-content">
+    <p style="color:#C9A84C;font-family:Tajawal;font-weight:bold;margin-bottom:0.5rem;">إدارة التصنيفات</p>
+    <p style="color:#999;font-family:Tajawal;font-size:0.85rem;margin-bottom:1rem;">التصنيفات تُبنى تلقائياً من المنتجات. يمكنك تغيير اسم أي تصنيف وسينعكس على جميع منتجاته.</p>
+    <div id="categories-admin-list"></div>
+  </div>
+
+  <!-- TAB: SETTINGS -->
+  <div id="tab-settings" class="admin-tab-content">
+    <div class="setting-group"><label>رقم الهاتف ١</label>
+      <input id="set-phone1" placeholder="01xxxxxxxxx"></div>
+    <div class="setting-group"><label>رقم الهاتف ٢</label>
+      <input id="set-phone2" placeholder="01xxxxxxxxx"></div>
+    <div class="setting-group"><label>رقم الهاتف ٣</label>
+      <input id="set-phone3" placeholder="01xxxxxxxxx"></div>
+    <div class="setting-group"><label>العنوان</label>
+      <input id="set-address" placeholder="العنوان الكامل"></div>
+    <div class="setting-group"><label>مواعيد العمل</label>
+      <input id="set-hours" placeholder="مثال: السبت - الخميس: 10ص - 10م"></div>
+    <div class="setting-group"><label>رابط الفيسبوك</label>
+      <input id="set-fb" placeholder="https://facebook.com/..."></div>
+    <div class="setting-group"><label>رابط خريطة جوجل (Embed)</label>
+      <input id="set-map" placeholder="https://www.google.com/maps/embed?..."></div>
+    <button class="btn-save-settings" onclick="saveSettings()">&#x1F4BE; حفظ الإعدادات</button>
+    <p id="settings-saved" style="color:#4caf50;text-align:center;display:none;margin-top:1rem;">
+      &#x2705; تم الحفظ بنجاح!
+    </p>
+    <hr style="border-color:#C9A84C; opacity:0.3; margin:1rem 0;">
+    <h5 style="color:#C9A84C; margin-bottom:0.5rem;">إعدادات GitHub (للنشر السحابي)</h5>
+    <div class="setting-group">
+      <label>GitHub Token (PAT)</label>
+      <input id="github-token-input" type="password" placeholder="ghp_..." />
+    </div>
+    <div class="setting-group">
+      <label>Repo Owner</label>
+      <input id="repo-owner-input" placeholder="username" />
+    </div>
+    <div class="setting-group">
+      <label>Repo Name</label>
+      <input id="repo-name-input" placeholder="repo-name" />
+    </div>
+    <div class="setting-group">
+      <label>Branch</label>
+      <input id="branch-input" placeholder="main" />
+    </div>
+    <button class="btn-save-settings" onclick="saveGitHubSettings()" style="margin-bottom:1rem;">&#x1F4BE; حفظ إعدادات GitHub</button>
+    <button class="btn-save" onclick="saveAndPublish()" style="width:100%;background:#4caf50;color:white;border:none;padding:10px;border-radius:8px;font-weight:bold;cursor:pointer;">&#x1F680; نشر الموقع على GitHub</button>
+  </div>
+
+  <!-- TAB: EXPORT -->
+  <div id="tab-export" class="admin-tab-content">
+    <div class="export-section">
+      <p style="color:#F5F0E8;margin-bottom:1.5rem;font-family:Tajawal;">تصدير بيانات الموقع كملفات JSON</p>
+      <button class="btn-export" onclick="exportProducts()">&#x1F4E5; تصدير products.json</button>
+      <button class="btn-export" onclick="exportSettings()" style="margin-top:0.75rem;">&#x1F4E5; تصدير settings.json</button>
+      <div class="export-note">
+        ١. اضغط تصدير لتنزيل الملف<br>
+        ٢. ضع الملف في مجلد assets/data/<br>
+        ٣. ارفع الموقع على GitHub<br>
+        ٤. التغييرات ستظهر للزوار تلقائياً
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-logout" onclick="logoutAdmin()">&#x1F6AA; تسجيل الخروج</button>
+</div>
+
+<!-- NOTION STYLE UI -->
+<div id="notion-floating-toolbar">
+  <button onclick="formatNotionText('bold')" title="Bold"><b>B</b></button>
+  <button onclick="formatNotionText('italic')" title="Italic"><i>I</i></button>
+  <button onclick="formatNotionText('underline')" title="Underline"><u>U</u></button>
+  <button onclick="promptNotionLink()" title="Link"><span class="material-symbols-outlined" style="font-size:18px">link</span></button>
+</div>
+
+<div id="notion-slash-menu">
+  <div class="slash-item" onclick="insertNotionBlock('h2')"><span class="material-symbols-outlined">title</span> عنوان كبير</div>
+  <div class="slash-item" onclick="insertNotionBlock('h3')"><span class="material-symbols-outlined">format_h3</span> عنوان متوسط</div>
+  <div class="slash-item" onclick="insertNotionBlock('ul')"><span class="material-symbols-outlined">format_list_bulleted</span> قائمة نقطية</div>
+  <div class="slash-item" onclick="insertNotionBlock('hr')"><span class="material-symbols-outlined">horizontal_rule</span> فاصل</div>
+</div>
+
+<div id="notion-hover-controls">
+  <button class="notion-ctrl-btn" title="إضافة عنصر" onclick="addNotionBlock()"><span class="material-symbols-outlined" style="font-size:16px">add</span></button>
+  <button class="notion-ctrl-btn" title="حذف العنصر" onclick="deleteNotionBlock()" style="color:#ffb4ab"><span class="material-symbols-outlined" style="font-size:16px">delete</span></button>
+  <button class="notion-ctrl-btn" title="سحب" style="cursor:grab"><span class="material-symbols-outlined" style="font-size:16px">drag_indicator</span></button>
+</div>
+
+<!-- MEDIA UPLOADER MODAL -->
+<div id="media-uploader-modal">
+  <h3>رفع وسائط جديدة</h3>
+  <div class="drop-zone" id="media-drop-zone">
+    <span class="material-symbols-outlined" style="font-size:48px; margin-bottom:1rem; display:block;">cloud_upload</span>
+    <p>اسحب وأفلت الصورة هنا<br>أو اضغط لاختيار ملف</p>
+    <input type="file" id="media-file-input" accept="image/*,video/*">
+  </div>
+  <div id="uploader-progress">جاري الرفع... 0%</div>
+  <button class="btn-close-modal" onclick="closeMediaUploader()">إلغاء</button>
+</div>
