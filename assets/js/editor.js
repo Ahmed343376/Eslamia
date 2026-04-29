@@ -160,6 +160,10 @@ function enableEditMode(isAuto = false) {
     setupEditableElements();
     setupBlocks();
     
+    // Show Gallery Admin Buttons if they exist
+    document.querySelector('.add-product-btn')?.classList.remove('hidden');
+    document.querySelectorAll('.delete-product-btn, .move-product-btns, .delete-cat-icon, #add-category-btn').forEach(el => el.classList.remove('hidden'));
+
     // Special: Telegram Settings for contact page
     if (window.location.pathname.includes('contact.html')) {
         setupTelegramEditor();
@@ -177,6 +181,10 @@ function exitEditMode() {
     document.getElementById('edit-floating-toolbar')?.remove();
     closeFloatingPanel();
     
+    // Hide Gallery Admin Buttons
+    document.querySelector('.add-product-btn')?.classList.add('hidden');
+    document.querySelectorAll('.delete-product-btn, .move-product-btns, .delete-cat-icon, #add-category-btn').forEach(el => el.classList.add('hidden'));
+
     // Remove contenteditable attributes
     document.querySelectorAll('[data-editable]').forEach(el => {
         if (el.dataset.editable === 'text') el.removeAttribute('contenteditable');
