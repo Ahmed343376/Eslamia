@@ -25,17 +25,43 @@ document.addEventListener("DOMContentLoaded", () => {
         {"id":12,"name":"طقم استقبال رسمي","category":"الاستقبال","categoryEn":"reception","image":"https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop","description":"طقم استقبال لمكاتب وشركات","materials":"جلد طبيعي ايطالي، شاسيه معدني مقوى، اسفنج حقن","price":"٦٥,٠٠٠ ج.م"}
     ];
 
-    // ✅ READ FROM LOCALSTORAGE FIRST (admin edits), fallback to defaultProducts
+    // ✅ SYNC WITH FIREBASE
     const PRODUCTS_KEY = 'islamiya_products';
-    const storedProducts = localStorage.getItem(PRODUCTS_KEY);
-    let productsData = storedProducts ? JSON.parse(storedProducts) : defaultProducts;
+    let productsData = defaultProducts; // Start with defaults
     
-    // Also expose globally so admin panel can update gallery live
-    window._galleryProducts = productsData;
-    window._galleryRenderFn = function(products) {
-        renderCategories(products);
-        renderGallery(products);
-    };
+    // Function to load products from Firebase
+    function syncProductsFromCloud() {
+        if (typeof db !== 'undefined') {
+            db.ref('products').on('value', (snapshot) => {
+                const cloudProducts = snapshot.val();
+                if (cloudProducts && Array.isArray(cloudProducts)) {
+                    productsData = cloudProducts;
+                    window._galleryProducts = productsData;
+                    renderCategories(productsData);
+                    renderGallery(productsData);
+                    console.log("Products synced from cloud.");
+                } else if (!cloudProducts) {
+                    // If cloud is empty, initialize it with defaults
+                    db.ref('products').set(defaultProducts);
+                }
+            }, (error) => {
+                console.error("Firebase Sync Error:", error);
+                // Fallback to local
+                const storedProducts = localStorage.getItem(PRODUCTS_KEY);
+                productsData = storedProducts ? JSON.parse(storedProducts) : defaultProducts;
+                renderCategories(productsData);
+                renderGallery(productsData);
+            });
+        } else {
+            // Fallback for local dev
+            const storedProducts = localStorage.getItem(PRODUCTS_KEY);
+            productsData = storedProducts ? JSON.parse(storedProducts) : defaultProducts;
+            renderCategories(productsData);
+            renderGallery(productsData);
+        }
+    }
+    
+    syncProductsFromCloud();
     
     window.addNewProduct = function() {
         const newId = Date.now(); // unique ID
@@ -50,14 +76,22 @@ document.addEventListener("DOMContentLoaded", () => {
             price: "٠ ج.م"
         };
         window._galleryProducts.unshift(newProduct);
-        localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-        window._galleryRenderFn(window._galleryProducts);
+        if (typeof db !== 'undefined') {
+            db.ref('products').set(window._galleryProducts);
+        } else {
+            localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
+            window._galleryRenderFn(window._galleryProducts);
+        }
     };
 
     window.deleteProduct = function(id) {
         window._galleryProducts = window._galleryProducts.filter(p => p.id != id);
-        localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-        window._galleryRenderFn(window._galleryProducts);
+        if (typeof db !== 'undefined') {
+            db.ref('products').set(window._galleryProducts);
+        } else {
+            localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
+            window._galleryRenderFn(window._galleryProducts);
+        }
     };
 
     window.moveProduct = function(id, direction) {
@@ -72,8 +106,17 @@ document.addEventListener("DOMContentLoaded", () => {
         window._galleryProducts[index] = window._galleryProducts[newIndex];
         window._galleryProducts[newIndex] = temp;
         
-        localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-        window._galleryRenderFn(window._galleryProducts);
+        if (typeof db !== 'undefined') {
+            db.ref('products').set(window._galleryProducts);
+        } else {
+            localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
+            window._galleryRenderFn(window._galleryProducts);
+        }
+    };
+
+    window._galleryRenderFn = function(products) {
+        renderCategories(products);
+        renderGallery(products);
     };
     
     renderCategories(productsData);
@@ -167,6 +210,21 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBackdrop.addEventListener("click", closeModal);
 
     function renderGallery(products) {
+        // Merge with Cloud Overrides (Visual Editor edits)
+        const cloudContent = window._siteContent || {};
+        const mergedProducts = products.map(p => {
+            const pId = p.id;
+            return {
+                ...p,
+                name: cloudContent[`product_${pId}_name`] || p.name,
+                image: cloudContent[`product_${pId}_image`] || p.image,
+                category: cloudContent[`product_${pId}_category`] || p.category,
+                description: cloudContent[`product_${pId}_description`] || p.description,
+                materials: cloudContent[`product_${pId}_materials`] || p.materials,
+                price: cloudContent[`product_${pId}_price`] || p.price
+            };
+        });
+
         galleryGrid.innerHTML = `
             <div class="add-product-btn product-card bg-transparent border-2 border-dashed border-[#C9A84C]/40 rounded-lg overflow-hidden flex flex-col items-center justify-center min-h-[300px] mb-6 shadow-none transition-colors hover:border-[#C9A84C] cursor-pointer hidden text-[#C9A84C]/70 hover:text-[#C9A84C]">
                 <span class="material-symbols-outlined text-5xl mb-4">add_circle</span>
@@ -181,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         
-        products.forEach((product, index) => {
+        mergedProducts.forEach((product, index) => {
             const card = document.createElement("div");
             card.className = "product-card bg-[#141830] border border-[#C9A84C]/20 rounded-lg overflow-hidden group mb-6 relative break-inside-avoid shadow-lg transition-colors hover:border-[#C9A84C]/60 cursor-pointer";
             card.dataset.category = product.category;

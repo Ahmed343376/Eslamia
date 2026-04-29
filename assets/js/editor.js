@@ -663,6 +663,10 @@ async function loadSiteContent() {
     content = { ...content, ...draftContent };
 
     // 4. Apply to DOM
+    window._siteContent = content; // Expose globally for gallery sync
+    if (window._galleryRenderFn && window._galleryProducts) {
+        window._galleryRenderFn(window._galleryProducts);
+    }
     applyContentToDOM(content);
 }
 
