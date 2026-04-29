@@ -333,10 +333,18 @@ function showImagePanel(imgEl) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (ev) => {
-                const b64 = ev.target.result;
-                imgEl.src = b64;
-                saveDraft(imgEl.dataset.editKey, b64);
+            reader.onload = async (ev) => {
+                const rawB64 = ev.target.result;
+                // Optimize image before saving
+                try {
+                    const optimizedB64 = await optimizeImage(rawB64, 1200, 0.8);
+                    imgEl.src = optimizedB64;
+                    saveDraft(imgEl.dataset.editKey, optimizedB64);
+                } catch (err) {
+                    console.warn("Optimization failed, saving raw image", err);
+                    imgEl.src = rawB64;
+                    saveDraft(imgEl.dataset.editKey, rawB64);
+                }
                 closeFloatingPanel();
             };
             reader.readAsDataURL(file);
@@ -351,6 +359,30 @@ function showImagePanel(imgEl) {
         }
         closeFloatingPanel();
     };
+}
+// Helper to compress images on the fly
+function optimizeImage(base64, maxWidth, quality) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = base64;
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+            
+            if (width > maxWidth) {
+                height = (maxWidth / width) * height;
+                width = maxWidth;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.onerror = reject;
+    });
 }
 
 function showIframePanel(iframeEl) {
@@ -554,7 +586,8 @@ function saveDraft(key, value) {
              });
              localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
              showDraftIndicator();
-             setTimeout(() => location.reload(), 1000);
+             // ❌ REMOVED RELOAD: instead, just re-render UI if possible
+             if (window._galleryRenderFn) window._galleryRenderFn(window._galleryProducts);
         }
         return;
     }
@@ -719,6 +752,12 @@ async function publishChanges() {
             btn.disabled = true;
 
             await db.ref('content').set(draftContent);
+            
+            // ✅ Update local site content state and trigger re-render
+            window._siteContent = { ...window._siteContent, ...draftContent };
+            if (window._galleryRenderFn && window._galleryProducts) {
+                window._galleryRenderFn(window._galleryProducts);
+            }
             
             btn.innerText = 'تم الحفظ سحابياً ✓';
             setTimeout(() => {
@@ -930,7 +969,7 @@ function showTelegramPanel() {
         localStorage.setItem('islamiya_settings', JSON.stringify(settings));
 
         alert('✓ تم حفظ الإعدادات');
-        location.reload(); // Reload to apply changes to contact.js
+        // location.reload(); // Removed reload
     };
 
     panel.querySelector('#tg-test-btn').onclick = async function() {
