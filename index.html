@@ -12,7 +12,6 @@
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         :root {
@@ -21,17 +20,50 @@
             --edit-border: #2a2e4c;
         }
         body { font-family: 'Tajawal', sans-serif; background-color: #0A0F2C; color: #e5e1e5; overflow-x: hidden; }
-        .hero-gradient { background: radial-gradient(circle at center, #141830 0%, #0A0F2C 100%); }
-        .gold-text { color: #C9A84C; }
-        .gold-border { border-color: #C9A84C; }
-        .nav-link { position: relative; transition: color 0.3s; }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; right: 0; width: 0; height: 2px; background: #C9A84C; transition: width 0.3s; }
-        .nav-link:hover::after { width: 100%; }
         
+        /* Hero Styles based on User Image */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 15, 44, 0.7), rgba(10, 15, 44, 0.7)), 
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-sub { color: #C9A84C; font-family: 'Noto Serif', serif; font-size: 1.5rem; margin-bottom: 1rem; }
+        .hero-main { font-family: 'Playfair Display', serif; font-size: 5rem; letter-spacing: 0.1em; line-height: 1.1; margin-bottom: 2rem; color: #fff; text-transform: uppercase; }
+        
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link.active { color: #C9A84C; }
+        .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #C9A84C; }
+        
+        .btn-gold-outline {
+            border: 2px solid #C9A84C;
+            color: #C9A84C;
+            padding: 1rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+            background: rgba(10, 15, 44, 0.4);
+        }
+        .btn-gold-outline:hover { background: #C9A84C; color: #0A0F2C; }
+
         .collection-card { position: relative; overflow: hidden; border-radius: 1rem; aspect-ratio: 4/5; }
-        .collection-img { width: 100%; height: 100%; object-cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .collection-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .collection-card:hover .collection-img { transform: scale(1.1); }
         .collection-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,15,44,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
+
+        @media (max-width: 768px) {
+            .hero-main { font-size: 2.5rem; }
+        }
     </style>
     
     <link rel="stylesheet" href="assets/css/editor.css">
@@ -39,38 +71,42 @@
 <body>
 
     <!-- Header / Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-[#0A0F2C]/60 backdrop-blur-lg border-b border-[#C9A84C]/20 px-12 h-24 flex items-center justify-between">
-        <div class="flex items-center">
-            <img src="assets/images/logo.png" alt="الإسلامية للموبيليا" class="h-20 w-auto" />
+    <nav class="fixed top-0 w-full z-50 bg-[#0A0F2C]/40 backdrop-blur-md border-b border-[#C9A84C]/10 px-12 h-24 flex items-center justify-between">
+        <div class="w-1/4">
+            <img src="assets/images/logo.png" alt="الإسلامية للموبيليا" class="h-16 w-auto" />
         </div>
-        <div class="hidden md:flex gap-10">
-            <a href="index.html" class="nav-link gold-text">الرئيسية</a>
-            <a href="gallery.html" class="nav-link text-slate-300">المعرض</a>
-            <a href="about.html" class="nav-link text-slate-300">من نحن</a>
-            <a href="location.html" class="nav-link text-slate-300">الموقع</a>
+        <div class="hidden md:flex w-2/4 justify-center gap-12 font-medium">
+            <a href="index.html" class="nav-link active">الرئيسية</a>
+            <a href="gallery.html" class="nav-link text-slate-200 hover:text-[#C9A84C]">المعرض</a>
+            <a href="about.html" class="nav-link text-slate-200 hover:text-[#C9A84C]">من نحن</a>
+            <a href="location.html" class="nav-link text-slate-200 hover:text-[#C9A84C]">الموقع</a>
         </div>
-        <a href="contact.html" class="border border-[#C9A84C] text-[#C9A84C] px-8 py-3 hover:bg-[#C9A84C] hover:text-[#0A0F2C] transition-all font-bold">اتصل بنا</a>
+        <div class="w-1/4 flex justify-end">
+            <a href="contact.html" class="border border-[#C9A84C] text-[#C9A84C] px-8 py-2 hover:bg-[#C9A84C] hover:text-[#0A0F2C] transition-all">اتصل بنا</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center relative overflow-hidden hero-gradient" id="hero-block" data-block="true">
-        <div class="container mx-auto px-12 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8">
-                <h1 class="text-6xl md:text-8xl font-bold leading-tight" data-edit-key="hero_title" data-editable="text">الإسلامية للموبيليا<br><span class="gold-text">فخامة التفاصيل</span></h1>
-                <p class="text-xl text-slate-400 max-w-lg leading-relaxed" data-edit-key="hero_desc" data-editable="text">نصنع الأثاث الذي يعكس شخصيتك ويحول منزلك إلى تحفة فنية تدوم لأجيال. خبرة عريقة في عالم الموبيليا الفاخرة.</p>
-                <div class="flex gap-6">
-                    <a href="gallery.html" class="bg-[#C9A84C] text-[#0A0F2C] px-10 py-4 font-bold rounded-lg hover:bg-white transition-all">اكتشف المعرض</a>
-                    <a href="contact.html" class="border border-slate-600 px-10 py-4 font-bold rounded-lg hover:border-[#C9A84C] transition-all">تواصل معنا</a>
-                </div>
+    <section class="hero-section" id="hero-block" data-block="true">
+        <div class="container mx-auto px-4 relative z-10">
+            <h3 class="hero-sub" data-edit-key="hero_sub" data-editable="text">الإسلامية للموبيليا</h3>
+            <h1 class="hero-main" data-edit-key="hero_main_title" data-editable="text">ARTISTRY IN EVERY<br>THREAD</h1>
+            
+            <div class="mt-8">
+                <a href="gallery.html" class="btn-gold-outline">
+                    <span class="material-symbols-outlined">arrow_downward</span>
+                    <span>استكشف المعرض</span>
+                </a>
             </div>
-            <div class="relative">
-                <div class="absolute -inset-4 bg-[#C9A84C]/10 blur-3xl rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop" data-edit-key="hero_img" data-editable="image" alt="Luxury Sofa" class="relative z-10 rounded-2xl shadow-2xl border border-[#C9A84C]/20" />
-            </div>
+        </div>
+        
+        <!-- Animated arrow at bottom -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-[#C9A84C] animate-bounce">
+            <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
         </div>
     </section>
 
-    <!-- Categories Grid (The new 4-column layout) -->
+    <!-- Categories Grid -->
     <section class="py-24 bg-[#0A0F2C]" id="collections-block" data-block="true">
         <div class="container mx-auto px-12 text-center mb-16">
             <h2 class="text-4xl font-bold mb-4" data-edit-key="coll_title" data-editable="text">مجموعاتنا المتميزة</h2>
