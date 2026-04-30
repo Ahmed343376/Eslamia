@@ -1,33 +1,22 @@
 /**
- * editor.js - Invisible Notion-Style CMS for Al-Islamiya
- * No backend required. Uses localStorage and JSON export.
+ * editor.js - Full Invisible Notion-Style CMS for Al-Islamiya
  */
 
-// --- GLOBALS ---
 const EDIT_PASSWORD = "islamiya2024";
 let isEditMode = false;
 try { isEditMode = localStorage.getItem('islamiya_edit_mode') === 'true'; } catch(e) {}
-window.isEditMode = isEditMode; // Expose for other scripts
+window.isEditMode = isEditMode;
 
 let draftContent = {};
 try { draftContent = JSON.parse(localStorage.getItem('islamiya_draft_content') || '{}'); } catch(e) {}
 let activeFloatingPanel = null;
 let currentEditingElement = null;
 
-// Setup triggers immediately (don't wait for DOMContentLoaded)
 function _initEditor() {
-    try { setupTriggers(); } catch(e) { console.error('Editor triggers failed:', e); }
-    try {
-        loadSiteContent().then(() => {
-            if (isEditMode) enableEditMode(true);
-        }).catch(err => {
-            applyDraftsOnly();
-            if (isEditMode) enableEditMode(true);
-        });
-    } catch(e) {
-        try { applyDraftsOnly(); } catch(e2) {}
-        if (isEditMode) try { enableEditMode(true); } catch(e3) {}
-    }
+    setupTriggers();
+    loadSiteContent().then(() => {
+        if (isEditMode) enableEditMode(true);
+    });
 }
 
 if (document.readyState === 'loading') {
@@ -36,11 +25,7 @@ if (document.readyState === 'loading') {
     _initEditor();
 }
 
-// =========================================================================
-// ENTRY TRIGGERS
-// =========================================================================
 function setupTriggers() {
-    // Keyboard shortcut Ctrl+Shift+A
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.shiftKey && e.key === 'A') {
             e.preventDefault();
@@ -49,17 +34,9 @@ function setupTriggers() {
         }
     });
 
-    // Trigger B: Secret corner button
-    const cornerBtn = document.createElement('div');
-    cornerBtn.id = 'editor-corner-trigger';
-    cornerBtn.style.cssText = `position: fixed; bottom: 4px; left: 4px; width: 14px; height: 14px; background: rgba(201,168,76,0.15); border-radius: 50%; cursor: pointer; z-index: 99999; transition: all 0.3s;`;
-    cornerBtn.onclick = () => { if (isEditMode) exitEditMode(); else showAuthToast(); };
-    document.body.appendChild(cornerBtn);
-
-    // Trigger C: Logo clicks (3 times)
+    const logo = document.querySelector('nav img');
     let logoClicks = 0;
     let logoClickTimer;
-    const logo = document.querySelector('nav img');
     if (logo) {
         logo.addEventListener('click', (e) => {
             if (isEditMode) return;
@@ -87,56 +64,43 @@ function setupTriggers() {
     }, true);
 }
 
-// =========================================================================
-// AUTHENTICATION
-// =========================================================================
 function showAuthToast() {
     if (document.getElementById('edit-auth-toast')) return;
     const toast = document.createElement('div');
     toast.id = 'edit-auth-toast';
     toast.innerHTML = `
-        <span style="color:var(--edit-primary); font-size:20px;">🔒</span>
-        <input type="password" id="edit-pass-input" placeholder="كلمة المرور" autocomplete="new-password"/>
+        <span style="color:#C9A84C; font-size:20px;">🔒</span>
+        <input type="password" id="edit-pass-input" placeholder="كلمة المرور" />
         <button id="edit-pass-btn">دخول</button>
     `;
     document.body.appendChild(toast);
     setTimeout(() => toast.classList.add('show'), 10);
     const input = document.getElementById('edit-pass-input');
-    const btn = document.getElementById('edit-pass-btn');
     input.focus();
     const submit = () => {
         if (input.value === EDIT_PASSWORD) {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 400);
+            toast.remove();
             enableEditMode();
         } else {
-            input.style.borderColor = '#ff4d4d';
+            input.style.borderColor = 'red';
             input.value = '';
-            setTimeout(() => input.style.borderColor = 'var(--edit-border)', 1000);
         }
     };
-    btn.onclick = submit;
+    document.getElementById('edit-pass-btn').onclick = submit;
     input.onkeypress = (e) => { if (e.key === 'Enter') submit(); };
 }
 
-// =========================================================================
-// CORE EDIT MODE LOGIC
-// =========================================================================
 function enableEditMode(isAuto = false) {
     isEditMode = true;
     window.isEditMode = true;
-    if (!isAuto) localStorage.setItem('islamiya_edit_mode', 'true');
+    localStorage.setItem('islamiya_edit_mode', 'true');
     document.body.classList.add('edit-mode-active');
     injectTopBar();
-    injectFloatingToolbar();
     setupEditableElements();
-    setupBlocks();
     
-    // Gallery Admin Buttons
+    // Gallery controls
     document.querySelector('.add-product-btn')?.classList.remove('hidden');
     document.querySelectorAll('.delete-product-btn, .move-product-btns, .delete-cat-icon, #add-category-btn').forEach(el => el.classList.remove('hidden'));
-
-    if (!isAuto) showDraftIndicator();
 }
 
 function exitEditMode() {
@@ -145,16 +109,8 @@ function exitEditMode() {
     localStorage.removeItem('islamiya_edit_mode');
     document.body.classList.remove('edit-mode-active');
     document.getElementById('edit-top-bar')?.remove();
-    document.getElementById('edit-floating-toolbar')?.remove();
     closeFloatingPanel();
-    
-    document.querySelector('.add-product-btn')?.classList.add('hidden');
-    document.querySelectorAll('.delete-product-btn, .move-product-btns, .delete-cat-icon, #add-category-btn').forEach(el => el.classList.add('hidden'));
-
-    document.querySelectorAll('[data-editable]').forEach(el => {
-        if (el.dataset.editable === 'text') el.removeAttribute('contenteditable');
-        el.classList.remove('is-editing');
-    });
+    location.reload();
 }
 
 function injectTopBar() {
@@ -162,13 +118,12 @@ function injectTopBar() {
     const bar = document.createElement('div');
     bar.id = 'edit-top-bar';
     bar.innerHTML = `
-        <div class="edit-bar-center">
-            <span class="material-symbols-outlined" style="font-size:18px; color:#4CAF50">cloud_done</span>
-            <span style="margin-right:10px">وضع التعديل نشط - الروابط معطلة لتسهيل التحرير</span>
+        <div style="display:flex; align-items:center; gap:10px">
+            <span class="material-symbols-outlined" style="color:#4CAF50">check_circle</span>
+            <span>وضع التحرير السحابي نشط</span>
         </div>
-        <div class="edit-bar-actions">
-            <button id="publish-btn" onclick="publishChanges()">حفظ نهائي</button>
-            <button onclick="exitEditMode()">خروج</button>
+        <div style="display:flex; gap:10px">
+            <button onclick="exitEditMode()" style="background:#444; color:white; padding:5px 15px; border-radius:5px">خروج</button>
         </div>
     `;
     document.body.appendChild(bar);
@@ -176,63 +131,96 @@ function injectTopBar() {
 
 function setupEditableElements() {
     document.querySelectorAll('[data-editable]').forEach(el => {
-        if (!el.dataset.editKey) return;
-        if (el.dataset.editorInit) return;
-        el.dataset.editorInit = 'true';
-
-        el.addEventListener('click', (e) => {
+        el.style.cursor = 'pointer';
+        el.onclick = (e) => {
             if (!isEditMode) return;
             e.preventDefault();
             e.stopPropagation();
-
+            
             const type = el.dataset.editable;
-            currentEditingElement = el;
-
-            if (type === 'text') {
-                el.setAttribute('contenteditable', 'plaintext-only');
+            if (type === 'text' || type === 'long-text') {
+                el.contentEditable = true;
                 el.focus();
-                el.classList.add('is-editing');
-                const onBlur = () => {
-                    el.classList.remove('is-editing');
-                    el.removeAttribute('contenteditable');
+                el.onblur = () => {
+                    el.contentEditable = false;
                     saveDraft(el.dataset.editKey, el.innerText);
-                    el.removeEventListener('blur', onBlur);
                 };
-                el.addEventListener('blur', onBlur);
-            } 
-            else if (type === 'long-text') {
-                const ta = document.createElement('textarea');
-                ta.className = 'inline-textarea';
-                ta.value = el.innerText;
-                el.innerHTML = '';
-                el.appendChild(ta);
-                ta.focus();
-                const finishEdit = () => {
-                    const newVal = ta.value;
-                    el.innerHTML = newVal;
-                    saveDraft(el.dataset.editKey, newVal);
-                };
-                ta.onblur = finishEdit;
+            } else if (type === 'image') {
+                showImagePanel(el);
+            } else if (type === 'link') {
+                showLinkPanel(el);
             }
-            else if (type === 'image') showImagePanel(el);
-            else if (type === 'link') showLinkPanel(el);
-        });
+        };
     });
 }
 
-// ... Rest of the file (Image panels, sync logic, etc.)
+function showImagePanel(imgEl) {
+    closeFloatingPanel();
+    const panel = createFloatingPanel();
+    panel.innerHTML = `
+        <div style="padding:15px; background:#141830; border:1px solid #C9A84C; border-radius:10px; color:white; min-width:250px">
+            <label style="display:block; margin-bottom:10px">تغيير الصورة</label>
+            <button id="up-btn" style="width:100%; background:#C9A84C; color:#0A0F2C; padding:8px; margin-bottom:10px; font-weight:bold">رفع من الجهاز</button>
+            <input type="file" id="f-input" style="display:none" accept="image/*">
+            <input type="text" id="u-input" placeholder="أو رابط الصورة" style="width:100%; padding:8px; background:#0A0F2C; border:1px solid #333; color:white; margin-bottom:10px" value="${imgEl.src}">
+            <button id="s-btn" style="width:100%; background:white; color:black; padding:8px">تحديث</button>
+        </div>
+    `;
+    positionPanel(panel, imgEl);
+    
+    panel.querySelector('#up-btn').onclick = () => panel.querySelector('#f-input').click();
+    panel.querySelector('#f-input').onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                imgEl.src = ev.target.result;
+                saveDraft(imgEl.dataset.editKey, ev.target.result);
+                closeFloatingPanel();
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    panel.querySelector('#s-btn').onclick = () => {
+        const url = panel.querySelector('#u-input').value;
+        if (url) {
+            imgEl.src = url;
+            saveDraft(imgEl.dataset.editKey, url);
+        }
+        closeFloatingPanel();
+    };
+}
+
+function showLinkPanel(linkEl) {
+    closeFloatingPanel();
+    const panel = createFloatingPanel();
+    panel.innerHTML = `
+        <div style="padding:15px; background:#141830; border:1px solid #C9A84C; border-radius:10px; color:white; min-width:250px">
+            <label>الرابط</label>
+            <input type="text" id="l-url" style="width:100%; padding:8px; background:#0A0F2C; color:white; margin:5px 0" value="${linkEl.href}">
+            <label>النص</label>
+            <input type="text" id="l-txt" style="width:100%; padding:8px; background:#0A0F2C; color:white; margin:5px 0" value="${linkEl.innerText}">
+            <button id="l-save" style="width:100%; background:#C9A84C; color:black; padding:8px; margin-top:10px">حفظ</button>
+        </div>
+    `;
+    positionPanel(panel, linkEl);
+    panel.querySelector('#l-save').onclick = () => {
+        linkEl.href = panel.querySelector('#l-url').value;
+        linkEl.innerText = panel.querySelector('#l-txt').value;
+        saveDraft(linkEl.dataset.editKey, { href: linkEl.href, text: linkEl.innerText });
+        closeFloatingPanel();
+    };
+}
+
 async function saveDraft(key, value) {
     if (!key) return;
+    
+    // Sync to Gallery if needed
     if (key.startsWith('category_') || key.startsWith('product_')) {
         if (window._galleryProducts) {
             if (key.startsWith('category_')) {
                 const oldCat = key.replace('category_', '');
-                const newCat = value.trim();
-                window._galleryProducts.forEach(p => { if (p.category === oldCat) p.category = newCat; });
-                if (window._galleryCategories) {
-                    const cIdx = window._galleryCategories.indexOf(oldCat);
-                    if (cIdx > -1) window._galleryCategories[cIdx] = newCat;
-                }
+                window._galleryProducts.forEach(p => { if (p.category === oldCat) p.category = value; });
             } else {
                 const parts = key.split('_');
                 const id = parseInt(parts[1]);
@@ -244,14 +232,14 @@ async function saveDraft(key, value) {
                 await db.ref('products').set(window._galleryProducts);
                 if (key.startsWith('category_')) await db.ref('categories').set(window._galleryCategories);
             }
-            localStorage.setItem('islamiya_products', JSON.stringify(window._galleryProducts));
-            if (window._galleryRenderFn) window._galleryRenderFn(window._galleryProducts);
         }
     }
+
     draftContent[key] = value;
     localStorage.setItem('islamiya_draft_content', JSON.stringify(draftContent));
+    
     if (typeof db !== 'undefined') {
-        try { await db.ref('content').update({ [key]: value }); } catch (e) {}
+        try { await db.ref('content').update({ [key]: value }); } catch(e) {}
     }
     showDraftIndicator();
 }
@@ -261,7 +249,7 @@ function showDraftIndicator() {
     if (!ind) {
         ind = document.createElement('div');
         ind.id = 'edit-draft-indicator';
-        ind.innerText = 'تم الحفظ تلقائياً ✓';
+        ind.innerHTML = 'تم الحفظ سحابياً ✓';
         document.body.appendChild(ind);
     }
     ind.classList.add('show');
@@ -269,22 +257,16 @@ function showDraftIndicator() {
 }
 
 async function loadSiteContent() {
-    let content = {};
     if (typeof db !== 'undefined') {
         try {
-            const snapshot = await db.ref('content').once('value');
-            if (snapshot.exists()) content = snapshot.val();
-        } catch (e) {}
+            const snap = await db.ref('content').once('value');
+            if (snap.exists()) {
+                const content = snap.val();
+                window._siteContent = { ...content, ...draftContent };
+                applyContentToDOM(window._siteContent);
+            }
+        } catch(e) {}
     }
-    if (Object.keys(content).length === 0) {
-        try {
-            const response = await fetch('assets/data/site-content.json');
-            if (response.ok) content = await response.json();
-        } catch (e) {}
-    }
-    content = { ...content, ...draftContent };
-    window._siteContent = content;
-    applyContentToDOM(content);
 }
 
 function applyContentToDOM(content) {
@@ -304,37 +286,6 @@ function applyContentToDOM(content) {
     });
 }
 
-function showImagePanel(imgEl) {
-    closeFloatingPanel();
-    const panel = createFloatingPanel();
-    panel.innerHTML = `
-        <label>تغيير الصورة</label>
-        <button class="panel-btn" id="panel-img-upload">رفع من الجهاز</button>
-        <input type="file" id="panel-img-file" style="display:none" accept="image/*">
-        <input type="text" id="panel-img-url" placeholder="أو رابط الصورة" value="${imgEl.src}">
-        <button class="panel-btn" id="panel-img-save" style="background:#C9A84C; color:#0A0F2C">تحديث</button>
-    `;
-    positionPanel(panel, imgEl);
-    panel.querySelector('#panel-img-upload').onclick = () => panel.querySelector('#panel-img-file').click();
-    panel.querySelector('#panel-img-file').onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (ev) => {
-                imgEl.src = ev.target.result;
-                saveDraft(imgEl.dataset.editKey, ev.target.result);
-                closeFloatingPanel();
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    panel.querySelector('#panel-img-save').onclick = () => {
-        const url = panel.querySelector('#panel-img-url').value;
-        if (url) { imgEl.src = url; saveDraft(imgEl.dataset.editKey, url); }
-        closeFloatingPanel();
-    };
-}
-
 function createFloatingPanel() {
     let p = document.getElementById('edit-floating-panel');
     if (!p) {
@@ -343,42 +294,17 @@ function createFloatingPanel() {
         p.className = 'edit-floating-panel';
         document.body.appendChild(p);
     }
+    p.classList.add('active');
     return p;
 }
 
 function closeFloatingPanel() {
     const p = document.getElementById('edit-floating-panel');
     if (p) p.classList.remove('active');
-    activeFloatingPanel = null;
 }
 
 function positionPanel(panel, targetEl) {
     const rect = targetEl.getBoundingClientRect();
     panel.style.top = (rect.bottom + window.scrollY + 10) + 'px';
     panel.style.left = (rect.left + rect.width / 2 - 125) + 'px';
-    panel.classList.add('active');
-    activeFloatingPanel = panel;
-}
-
-function injectFloatingToolbar() {
-    // Basic toolbar logic can go here if needed
-}
-
-function setupBlocks() {}
-function publishChanges() { alert("تم الحفظ السحابي بنجاح! جميع التعديلات محفوظة تلقائياً."); }
-function showLinkPanel(linkEl) {
-    closeFloatingPanel();
-    const panel = createFloatingPanel();
-    panel.innerHTML = `
-        <label>الرابط</label><input type="text" id="p-link-url" value="${linkEl.href}">
-        <label>النص</label><input type="text" id="p-link-text" value="${linkEl.innerText}">
-        <button class="panel-btn" id="p-link-save" style="background:#C9A84C">حفظ</button>
-    `;
-    positionPanel(panel, linkEl);
-    panel.querySelector('#p-link-save').onclick = () => {
-        linkEl.href = panel.querySelector('#p-link-url').value;
-        linkEl.innerText = panel.querySelector('#p-link-text').value;
-        saveDraft(linkEl.dataset.editKey, { href: linkEl.href, text: linkEl.innerText });
-        closeFloatingPanel();
-    };
 }
