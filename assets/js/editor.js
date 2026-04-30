@@ -36,7 +36,7 @@ function setupTriggers() {
     // Secret Corner Button
     const cornerBtn = document.createElement('div');
     cornerBtn.id = 'editor-corner-trigger';
-    cornerBtn.style.cssText = `position:fixed; bottom:10px; left:10px; width:25px; height:25px; background:rgba(201,168,76,0.4); border-radius:50%; cursor:pointer; z-index:100000; border:1px solid #C9A84C;`;
+    cornerBtn.style.cssText = `position:fixed; bottom:10px; left:10px; width:16px; height:16px; background:rgba(201,168,76,0.3); border-radius:50%; cursor:pointer; z-index:100000; border:1px solid rgba(201,168,76,0.5); transition: all 0.3s;`;
     cornerBtn.onclick = () => { if (isEditMode) exitEditMode(); else showAuthToast(); };
     document.body.appendChild(cornerBtn);
 
